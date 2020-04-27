@@ -8,9 +8,9 @@ setup(
     packages=["at_ml"],
     description="A package to predicting fraudulent transactions.",
     long_description=open("README.md").read(),
-    license=open("LICENSE.md.md").read(),
+    license=open("LICENSE.md").read(),
     entry_points={
-        'console_scripts': ['atml-cli=atml.cmd:main']
+        'console_scripts': ['atml-cli=at_ml.cmd:main']
     }
 
 )
