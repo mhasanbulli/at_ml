@@ -6,6 +6,8 @@ import pandas as pd
 import lightgbm as lgbm
 
 from sklearn.metrics import classification_report
+from sklearn.preprocessing import MinMaxScaler
+from pathlib import Path
 
 class lof_lgbm:
     def __init__(self):
@@ -16,11 +18,22 @@ class lof_lgbm:
         self.lgbm_model.fit(
             X_train, y_train,
             eval_set=[(X_test, y_test)],
-            eval_metric=["auc", "binary_logloss"]
+            eval_metric=["auc", "binary_logloss"],
+            verbose=1
         )
 
     def predict(self, X):
         y_pred = self.lgbm_model.predict(X, num_iteration=self.lgbm_model.best_iteration_)
+        return y_pred
+
+    def predict_results(self, directory):
+        for file in (Path(directory)).iterdir():
+            data = pd.read_csv(file, index_col="consumer_id")
+
+        data.drop(["gender", "customer_age", "account_status"], axis=1, inplace=True)
+        data_p= pd.DataFrame(MinMaxScaler().fit_transform(data), index=data.index)
+
+        y_pred = self.lgbm_model.predict(data_p, num_iteration=self.lgbm_model.best_iteration_)
         return y_pred
 
     def predict_prob(self, X):

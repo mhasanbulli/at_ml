@@ -17,9 +17,7 @@ class dataset:
         for file in (directory).iterdir():
             data = pd.read_csv(file, index_col="consumer_id")
 
-        cols_with_na = [col for col in data.columns if data[col].isnull().any()]
-
-        data.drop(cols_with_na + ["account_status"], axis=1, inplace=True)
+        data.drop(["gender", "customer_age", "account_status"], axis=1, inplace=True)
         data_lof = pd.DataFrame(MinMaxScaler().fit_transform(data), index=data.index)
         lof = LocalOutlierFactor(n_neighbors=50, contamination=0.1).fit_predict(data_lof)
         data_lof.columns = data.columns
