@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name="at_ml",
-    version="0.1.0",
+    version="1.0.0",
     author="Mustafa Hasanbulli",
     author_email="mustafa@hasanbul.li",
     packages=["at_ml"],
