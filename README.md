@@ -33,9 +33,9 @@ m.train(X_train, y_train, X_test, y_test)
 
 ## Usage - Command Line
 
-`at_ml` comes with a command line cli. You can get more information on how to use the CLI by typing
+`at_ml` comes with a command line CLI interface. You can get more information on how to use the CLI by typing
 ```bash
-arml-cli --help
+atml-cli --help
 ```
 in the command line.
 
@@ -45,10 +45,10 @@ You can also use `download_data.sh` script to get a copy of the sample data.
 
 ## Remarks & Assumptions
 
-- We do not provide any hyperparamter optimisation this package.
+- We do not provide any hyperparamter optimisation in this package.
 - We assume the training is being done on a dataset that has the similar characteristics to the 
-given sample data.
-- We do not perform any missing data imputation as the sample data has no missing data.
+provided sample data.
+- We do not perform any missing data imputation as the provided sample data has no missing data.
 - We do not provide any plotting functionality with this package.
 
 ## License
